@@ -1,23 +1,8 @@
 import * as React from "react";
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-  SimpleGrid,
-  Flex,
-  Input,
-} from "@chakra-ui/react";
-import {
-  GameStateType,
-  initialGameState,
-  Game,
-  gameReducer,
-} from "./game/Game";
+import { Box, Grid, theme, ChakraProvider } from "@chakra-ui/react";
+import { GameTemplate } from "./game/templates/GameTemplate";
+import { initialGameState, GameStateType } from "./game/state/gameState";
+import { gameReducer } from "./game/reducers/gameReducers";
 
 //  state
 
@@ -36,21 +21,21 @@ const initialState: StateType = {
   game: initialGameState,
 };
 
-
 // Action Types
 
 export enum Action {
-    CharPressed,
+  CharPressed,
+  InputChanged,
 }
 
 export type ActionType = {
-    type: Action;
-    payload?: { key: string; value: boolean };
+  type: Action;
+  payload?: { key: string; value: string };
 };
 
 // Reducer
 
-function reducer(state:StateType, action: ActionType) {
+function reducer(state: StateType, action: ActionType) {
   return { ...state, game: gameReducer(state.game, action) };
 }
 
@@ -61,7 +46,6 @@ export const layoutDebugStyles = {
   borderColor: "yellow.300",
 };
 
-// export const Listings: FC<{ podcasts: PodcastType[] }> = ({
 export const App = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
@@ -76,7 +60,7 @@ export const App = () => {
       >
         <Grid gap={4} templateColumns="auto 90vh auto" templateRows="100vh">
           <Box {...layoutDebugStyles}></Box>
-          <Game state={state.game} dispatch={dispatch} />
+          <GameTemplate state={state.game} dispatch={dispatch} />
           <Box></Box>
         </Grid>
       </Box>
