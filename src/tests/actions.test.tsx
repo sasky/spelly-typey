@@ -9,7 +9,6 @@ test("action change character", () => {
 
   const initialState: GameStateType = {
     hint: "arch i tec ture ",
-    timer: 60, //60 seconds countdown to zero
     input: "", // current input valuE
     current: [
       {

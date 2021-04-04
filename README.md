@@ -4,55 +4,17 @@
 
 remove the word Type on each type name
 
+turn below into an Enum
+state: "passed", // pending, passed, failed
 
 #So lets just work on the word
 
 write more tests for current word feature
 refactor code more, remove comments
 
-get full word in current set 
+get full word in current set
 
 play with feel, size and layout of things
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
