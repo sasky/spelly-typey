@@ -1,10 +1,10 @@
 
 //  State Types
 
+// timer: number; //60 seconds countdown to zero
+
 export type GameStateType = {
-  currentIndex: number;
   hint: string;
-  timer: number; //60 seconds countdown to zero
   input: string; // current input valuE
   current: CurrentWordCharacterType[];
 };
@@ -19,7 +19,6 @@ export type CurrentWordCharacterType = {
 // Initial State
 
 export const initialGameState = {
-  currentIndex: 0,
   hint: "arch i tec ture ",
   timer: 60, //60 seconds countdown to zero
   input: "", // current input valuE

@@ -1,12 +1,13 @@
-import { Action, gameReducer } from "./../components/home";
+import { gameReducer } from "../components/game/reducers/gameReducers";
+import { Action } from "../components/App";
+import { GameStateType } from "../components/game/state/gameState";
 
 test("action change character", () => {
   // GIVEN
 
   // we have a state like this
 
-  const initialState = {
-    currentIndex: 0,
+  const initialState: GameStateType = {
     hint: "arch i tec ture ",
     timer: 60, //60 seconds countdown to zero
     input: "", // current input valuE
@@ -31,12 +32,12 @@ test("action change character", () => {
     payload: { key: "character", value: "a" },
   });
 
+  // console.log('STATE UPDATED' , stateUpdated);
   // THEN
 
   // the state should look like so
-  const desired = {
+  const desired: GameStateType = {
     ...initialState,
-    currentIndex: 1,
     current: [
       {
         letter: "a",
@@ -59,7 +60,6 @@ test("action change character", () => {
     })
   ).toStrictEqual({
     ...desired,
-    currentIndex: 2,
     current: [
       {
         letter: "a",
@@ -79,10 +79,8 @@ test("action change character --wrong input character", () => {
   // we have a state like this
 
   const initialState = {
-    currentIndex: 0,
     hint: "arch i tec ture ",
     timer: 60, //60 seconds countdown to zero
-    input: "", // current input valuE
     current: [
       {
         letter: "a",
@@ -107,7 +105,6 @@ test("action change character --wrong input character", () => {
   // THEN
 
   // the state should not look like this
-  // currentIndex is reset to 0, as we wil need to start typing again
 
   const desired = {
     ...initialState,
@@ -121,6 +118,37 @@ test("action change character --wrong input character", () => {
         state: "pending", // pending, passed, failed
       },
     ],
+  };
+
+  expect(stateUpdated).toStrictEqual(desired);
+});
+
+test("action input change", () => {
+  // GIVEN
+
+  // we have a state like this
+
+  const initialState = {
+    input: "", // current input valuE
+  };
+
+  // WHEN
+
+  // an on change handler fires and sends the input to the game reducer
+
+
+  const stateUpdated = gameReducer(initialState, {
+    type: Action.InputChanged,
+    payload: { key: "input", value: "hello" },
+  });
+
+  // THEN
+
+  // the state should not look like this
+
+  const desired = {
+    ...initialState,
+    input: "hello",
   };
 
   expect(stateUpdated).toStrictEqual(desired);

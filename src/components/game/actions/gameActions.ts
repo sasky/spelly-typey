@@ -1,33 +1,57 @@
-import { GameStateType } from "../state/gameState";
+import { GameStateType, CurrentWordCharacterType } from "../state/gameState";
+
+const isResetChar = (char: string): boolean => char === "Backspace";
+
+const resetWord = (
+  current: CurrentWordCharacterType[]
+): CurrentWordCharacterType[] => {
+  return current.map((char: CurrentWordCharacterType) => ({
+    ...char,
+    state: "pending",
+  }));
+};
+
+const evaluateChar = (
+  current: CurrentWordCharacterType[],
+  charPressed: string
+): CurrentWordCharacterType[] => {
+  const index = current.findIndex(
+    (char: CurrentWordCharacterType) => char.state === "pending"
+  );
+  if (index === -1) {
+    // TODO: this should never happen. Maybe just crash here;
+    return current;
+  }
+  const CharShouldBe = current[index];
+
+  const inputIsEqual = charPressed === CharShouldBe.letter;
+
+  // also if there is a previous failed char, then all next chars should also fail
+  const hasWordAlreadyFailed =
+    current.findIndex(
+      (char: CurrentWordCharacterType) => char.state === "failed"
+    ) !== -1;
+
+  return current.map((char, i) =>
+    i === index
+      ? hasWordAlreadyFailed
+        ? { ...char, state: "failed" }
+        : inputIsEqual
+        ? { ...char, state: "passed" }
+        : { ...char, state: "failed" }
+      : char
+  );
+};
 
 export const actionGameCharPressed = (
   state: GameStateType,
   charPressed: string
 ) => {
   // find the current letter
-
-  const value = state.input + charPressed;
-  const index = state.currentIndex;
-  const CharShouldBe = state.current[index]["letter"];
-
-  const inputIsEqual = charPressed === CharShouldBe;
-
-  const currentIndex = inputIsEqual ? index + 1 : index;
-
-  const current = state.current.map((char, i) =>
-    i === index
-      ? inputIsEqual
-        ? { ...char, state: "passed" }
-        : { ...char, state: "failed" }
-      : char
-  );
-
-  return {
-    ...state,
-    value,
-    currentIndex,
-    current,
-  };
+  const doReset = isResetChar(charPressed);
+  return doReset
+    ? { ...state,input: '', current: resetWord(state.current) }
+    : { ...state, current: evaluateChar(state.current, charPressed) };
 };
 
 export const actionChangeInput = (state: GameStateType, value: string) => {

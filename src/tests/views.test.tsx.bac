@@ -1,0 +1,39 @@
+// import React from "react";
+// import { screen } from "@testing-library/react";
+// import { render} from "./../test-utils";
+// // import {debug} from "@testing-library/react"
+// import { View as CurrentWordFeedBack } from "../components/game/currentWordFeedBack";
+
+// test("renders learn react link", () => {
+  
+//     const state = [
+//     {
+//       letter: "a",
+//       state: "passed",
+//     },
+//     {
+//       letter: "r",
+//       state: "passed",
+//     },
+//     {
+//       letter: "c",
+//       state: "passed",
+//     },
+//     {
+//       letter: "h",
+//       state: "pending",
+//     },
+//   ];
+
+//   // WHEN we render out this state
+//   render(<CurrentWordFeedBack currentSet={state} />);
+
+//   const htmlWord = screen.getByTestId('currentWordFeedBack');
+  
+//   // THEN 
+  
+//   screen.debug(htmlWord);
+//  // snapshot 
+//   // I guess check that every letter is a spana 
+//   // expect(linkElement).toBeInTheDocument();
+// });

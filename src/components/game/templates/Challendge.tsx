@@ -12,8 +12,10 @@ export const Challenge = ({
     <Box flexGrow={4}>
       <h2 data-testid="currentWordFeedBack">
         {currentSet.map((character, i) => {
-          const letterColor =
-            character.state === "passed" ? "green.300" : "gray.100";
+            const map = {"passed" : "green.300",
+                        "failed" : "red.500",
+                        "pending": "gray.100"}
+          const letterColor = map[character.state] ;
 
           return (
             <Text key={i} as="span" color={letterColor}>

@@ -8,7 +8,6 @@ export function gameReducer(state: GameStateType, action: ActionType) {
     case Action.CharPressed:
       return actionGameCharPressed(state, action.payload.value);
     case Action.InputChanged:
-        console.log(action.payload);
       return actionChangeInput(state, action.payload.value);
     default:
       return state;
