@@ -1,9 +1,9 @@
-import {GameStateType} from "../state/gameState";
+import {GameState} from "../state/gameState";
 import {ActionType, Action} from "../../App";
 import {actionGameCharPressed, actionChangeInput} from "../actions/gameActions";
 
 
-export function gameReducer(state: GameStateType, action: ActionType) {
+export function gameReducer(state: GameState, action: ActionType) {
   switch (action.type) {
     case Action.CharPressed:
       return actionGameCharPressed(state, action.payload.value);

@@ -2,13 +2,13 @@ import * as React from "react";
 import { Box, Flex, Input } from "@chakra-ui/react";
 import { layoutDebugStyles, Action } from "../../App";
 import { Challenge } from "./Challendge";
-import { GameStateType } from "../state/gameState";
+import { GameState } from "../state/gameState";
 
 export const GameTemplate = ({
   state,
   dispatch,
 }: {
-  state: GameStateType;
+  state: GameState;
   dispatch: Function;
 }) => {
   return (

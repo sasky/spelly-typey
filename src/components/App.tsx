@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Box, Grid, theme, ChakraProvider } from "@chakra-ui/react";
 import { GameTemplate } from "./game/templates/GameTemplate";
-import { initialGameState, GameStateType } from "./game/state/gameState";
+import { initialGameState, GameState } from "./game/state/gameState";
 import { gameReducer } from "./game/reducers/gameReducers";
 
 //  state
@@ -10,7 +10,7 @@ export type StateType = {
   view: string;
   directory: object[];
   stats: object[];
-  game: GameStateType;
+  game: GameState;
 };
 
 const initialState: StateType = {

@@ -3,7 +3,7 @@
 
 // timer: number; //60 seconds countdown to zero
 
-export type GameStateType = {
+export type GameState = {
   hint: string;
   input: string; // current input valuE
   current: CurrentWordCharacterType[];

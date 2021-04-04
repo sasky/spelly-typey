@@ -1,13 +1,13 @@
 import { gameReducer } from "../components/game/reducers/gameReducers";
 import { Action } from "../components/App";
-import { GameStateType } from "../components/game/state/gameState";
+import { GameState } from "../components/game/state/gameState";
 
 test("action change character", () => {
   // GIVEN
 
   // we have a state like this
 
-  const initialState: GameStateType = {
+  const initialState: GameState = {
     hint: "arch i tec ture ",
     input: "", // current input valuE
     current: [
@@ -35,7 +35,7 @@ test("action change character", () => {
   // THEN
 
   // the state should look like so
-  const desired: GameStateType = {
+  const desired: GameState = {
     ...initialState,
     current: [
       {

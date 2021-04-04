@@ -1,4 +1,4 @@
-import { GameStateType, CurrentWordCharacterType } from "../state/gameState";
+import { GameState, CurrentWordCharacterType } from "../state/gameState";
 
 const isResetChar = (char: string): boolean => char === "Backspace";
 
@@ -44,7 +44,7 @@ const evaluateChar = (
 };
 
 export const actionGameCharPressed = (
-  state: GameStateType,
+  state: GameState,
   charPressed: string
 ) => {
   // find the current letter
@@ -54,7 +54,7 @@ export const actionGameCharPressed = (
     : { ...state, current: evaluateChar(state.current, charPressed) };
 };
 
-export const actionChangeInput = (state: GameStateType, value: string) => {
+export const actionChangeInput = (state: GameState, value: string) => {
   return {
     ...state,
     input: value,
