@@ -6,11 +6,11 @@
 export type GameState = {
   hint: string;
   input: string; // current input valuE
-  current: CurrentWordCharacterType[];
+  current: CurrentWordCharacter[];
 };
 
 
-export type CurrentWordCharacterType = {
+export type CurrentWordCharacter = {
   letter: string;
   state: string;
 };

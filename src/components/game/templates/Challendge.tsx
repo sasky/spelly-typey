@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Box, Text } from "@chakra-ui/react";
-import {CurrentWordCharacterType} from "../state/gameState";
+import {CurrentWordCharacter} from "../state/gameState";
 
 export const Challenge = ({
   currentSet,
 }: {
-  currentSet: CurrentWordCharacterType[];
+  currentSet: CurrentWordCharacter[];
 }) => {
   //local read state
   return (

@@ -1,22 +1,22 @@
-import { GameState, CurrentWordCharacterType } from "../state/gameState";
+import { GameState, CurrentWordCharacter } from "../state/gameState";
 
 const isResetChar = (char: string): boolean => char === "Backspace";
 
 const resetWord = (
-  current: CurrentWordCharacterType[]
-): CurrentWordCharacterType[] => {
-  return current.map((char: CurrentWordCharacterType) => ({
+  current: CurrentWordCharacter[]
+): CurrentWordCharacter[] => {
+  return current.map((char: CurrentWordCharacter) => ({
     ...char,
     state: "pending",
   }));
 };
 
 const evaluateChar = (
-  current: CurrentWordCharacterType[],
+  current: CurrentWordCharacter[],
   charPressed: string
-): CurrentWordCharacterType[] => {
+): CurrentWordCharacter[] => {
   const index = current.findIndex(
-    (char: CurrentWordCharacterType) => char.state === "pending"
+    (char: CurrentWordCharacter) => char.state === "pending"
   );
   if (index === -1) {
     // TODO: this should never happen. Maybe just crash here;
@@ -29,7 +29,7 @@ const evaluateChar = (
   // also if there is a previous failed char, then all next chars should also fail
   const hasWordAlreadyFailed =
     current.findIndex(
-      (char: CurrentWordCharacterType) => char.state === "failed"
+      (char: CurrentWordCharacter) => char.state === "failed"
     ) !== -1;
 
   return current.map((char, i) =>
