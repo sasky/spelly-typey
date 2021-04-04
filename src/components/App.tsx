@@ -6,14 +6,14 @@ import { gameReducer } from "./game/reducers/gameReducers";
 
 //  state
 
-export type StateType = {
+export type AppState = {
   view: string;
   directory: object[];
   stats: object[];
   game: GameState;
 };
 
-const initialState: StateType = {
+const initialState: AppState = {
   view: "start", // start. playing, results
   directory: [], // list of all the words and there helpers
   stats: [], // record of all progress
@@ -35,7 +35,7 @@ export type ActionInitiator = {
 
 // Reducer
 
-function reducer(state: StateType, action: ActionInitiator) {
+function reducer(state: AppState, action: ActionInitiator) {
   return { ...state, game: gameReducer(state.game, action) };
 }
 
