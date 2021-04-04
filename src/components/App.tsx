@@ -27,15 +27,15 @@ export enum Action {
   CharPressed,
   InputChanged,
 }
-
-export type ActionType = {
+// Action  ActionInitiator
+export type ActionInitiator = {
   type: Action;
   payload?: { key: string; value: string };
 };
 
 // Reducer
 
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: StateType, action: ActionInitiator) {
   return { ...state, game: gameReducer(state.game, action) };
 }
 
