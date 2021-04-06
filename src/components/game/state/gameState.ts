@@ -10,8 +10,8 @@ export type GameState = {
 
 export enum LetterState {
   Pending = "PENDING",
-  failed = "FAILED",
-  passed = "PASSED",
+  Failed = "FAILED",
+  Passed = "PASSED",
 }
 
 export type CurrentWordCharacter = {

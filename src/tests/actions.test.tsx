@@ -40,7 +40,7 @@ test("action change character", () => {
     current: [
       {
         letter: "a",
-        state: LetterState.passed, // pending, passed, failed
+        state: LetterState.Passed, // pending, passed, failed
       },
       {
         letter: "r",
@@ -62,11 +62,11 @@ test("action change character", () => {
     current: [
       {
         letter: "a",
-        state: LetterState.passed, // pending, passed, failed
+        state: LetterState.Passed, // pending, passed, failed
       },
       {
         letter: "r",
-        state: LetterState.passed, // pending, passed, failed
+        state: LetterState.Passed, // pending, passed, failed
       },
     ],
   });
@@ -110,7 +110,7 @@ test("action change character --wrong input character", () => {
     current: [
       {
         letter: "a",
-        state: LetterState.failed, // pending, passed, failed
+        state: LetterState.Failed, // pending, passed, failed
       },
       {
         letter: "r",

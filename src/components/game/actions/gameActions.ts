@@ -32,16 +32,16 @@ const evaluateChar = (
 
   // also if there is a previous failed char, then all next chars should also fail
   const hasWordAlreadyFailed = current.some(
-    (char: CurrentWordCharacter) => char.state === LetterState.failed
+    (char: CurrentWordCharacter) => char.state === LetterState.Failed
   );
 
   return current.map((char, i) =>
     i === index
       ? hasWordAlreadyFailed
-        ? { ...char, state: LetterState.failed }
+        ? { ...char, state: LetterState.Failed }
         : inputIsEqual
-        ? { ...char, state: LetterState.passed }
-        : { ...char, state: LetterState.failed }
+        ? { ...char, state: LetterState.Passed }
+        : { ...char, state: LetterState.Failed }
       : char
   );
 };

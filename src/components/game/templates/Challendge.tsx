@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, Text } from "@chakra-ui/react";
-import {CurrentWordCharacter} from "../state/gameState";
+import { CurrentWordCharacter, LetterState } from "../state/gameState";
 
 export const Challenge = ({
   currentSet,
@@ -12,10 +12,12 @@ export const Challenge = ({
     <Box flexGrow={4}>
       <h2 data-testid="currentWordFeedBack">
         {currentSet.map((character, i) => {
-            const map = {"passed" : "green.300",
-                        "failed" : "red.500",
-                        "pending": "gray.100"}
-          const letterColor = map[character.state] ;
+          const map = {
+            [LetterState.Passed]: "green.300",
+            [LetterState.Failed]: "red.500",
+            [LetterState.Pending]: "gray.100",
+          } as const;
+          const letterColor = map[character.state];
 
           return (
             <Text key={i} as="span" color={letterColor}>
