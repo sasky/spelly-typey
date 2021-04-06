@@ -1,11 +1,15 @@
-import { GameState, CurrentWordCharacter } from "../state/gameState";
+import {
+  GameState,
+  CurrentWordCharacter,
+  LetterState,
+} from "../state/gameState";
 
 const isResetChar = (char: string): boolean => char === "Backspace";
 
 const resetWord = (current: CurrentWordCharacter[]): CurrentWordCharacter[] => {
   return current.map((char: CurrentWordCharacter) => ({
     ...char,
-    state: "pending",
+    state: LetterState.Pending,
   }));
 };
 
@@ -14,7 +18,7 @@ const evaluateChar = (
   charPressed: string
 ): CurrentWordCharacter[] => {
   const index = current.findIndex(
-    (char: CurrentWordCharacter) => char.state === "pending"
+    (char: CurrentWordCharacter) => char.state === LetterState.Pending
   );
 
   if (index === -1) {
@@ -28,16 +32,16 @@ const evaluateChar = (
 
   // also if there is a previous failed char, then all next chars should also fail
   const hasWordAlreadyFailed = current.some(
-    (char: CurrentWordCharacter) => char.state === "failed"
+    (char: CurrentWordCharacter) => char.state === LetterState.failed
   );
 
   return current.map((char, i) =>
     i === index
       ? hasWordAlreadyFailed
-        ? { ...char, state: "failed" }
+        ? { ...char, state: LetterState.failed }
         : inputIsEqual
-        ? { ...char, state: "passed" }
-        : { ...char, state: "failed" }
+        ? { ...char, state: LetterState.passed }
+        : { ...char, state: LetterState.failed }
       : char
   );
 };

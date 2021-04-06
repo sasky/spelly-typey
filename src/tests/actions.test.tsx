@@ -1,6 +1,6 @@
 import { gameReducer } from "../components/game/reducers/gameReducers";
 import { Action } from "../components/App";
-import { GameState } from "../components/game/state/gameState";
+import { GameState, LetterState } from "../components/game/state/gameState";
 
 test("action change character", () => {
   // GIVEN
@@ -13,11 +13,11 @@ test("action change character", () => {
     current: [
       {
         letter: "a",
-        state: "pending", // pending, passed, failed
+        state: LetterState.Pending, // pending, passed, failed
       },
       {
         letter: "r",
-        state: "pending", // pending, passed, failed
+        state: LetterState.Pending, // pending, passed, failed
       },
     ],
   };
@@ -40,11 +40,11 @@ test("action change character", () => {
     current: [
       {
         letter: "a",
-        state: "passed", // pending, passed, failed
+        state: LetterState.passed, // pending, passed, failed
       },
       {
         letter: "r",
-        state: "pending", // pending, passed, failed
+        state: LetterState.Pending, // pending, passed, failed
       },
     ],
   };
@@ -62,11 +62,11 @@ test("action change character", () => {
     current: [
       {
         letter: "a",
-        state: "passed", // pending, passed, failed
+        state: LetterState.passed, // pending, passed, failed
       },
       {
         letter: "r",
-        state: "passed", // pending, passed, failed
+        state: LetterState.passed, // pending, passed, failed
       },
     ],
   });
@@ -83,11 +83,11 @@ test("action change character --wrong input character", () => {
     current: [
       {
         letter: "a",
-        state: "pending", // pending, passed, failed
+        state: LetterState.Pending, // pending, passed, failed
       },
       {
         letter: "r",
-        state: "pending", // pending, passed, failed
+        state: LetterState.Pending, // pending, passed, failed
       },
     ],
   };
@@ -110,11 +110,11 @@ test("action change character --wrong input character", () => {
     current: [
       {
         letter: "a",
-        state: "failed", // pending, passed, failed
+        state: LetterState.failed, // pending, passed, failed
       },
       {
         letter: "r",
-        state: "pending", // pending, passed, failed
+        state: LetterState.Pending, // pending, passed, failed
       },
     ],
   };

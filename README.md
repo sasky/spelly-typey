@@ -2,10 +2,8 @@
 
 #refactors
 
-remove the word Type on each type name
 
-turn below into an Enum
-state: "passed", // pending, passed, failed
+give the current word its own game bit, with reducer and the like
 
 #So lets just work on the word
 

@@ -1,4 +1,3 @@
-
 //  State Types
 
 // timer: number; //60 seconds countdown to zero
@@ -9,12 +8,16 @@ export type GameState = {
   current: CurrentWordCharacter[];
 };
 
+export enum LetterState {
+  Pending = "PENDING",
+  failed = "FAILED",
+  passed = "PASSED",
+}
 
 export type CurrentWordCharacter = {
   letter: string;
-  state: string;
+  state: LetterState;
 };
-
 
 // Initial State
 
@@ -25,23 +28,23 @@ export const initialGameState = {
   current: [
     {
       letter: "a",
-      state: "pending", // pending, passed, failed
+      state: LetterState.Pending,
     },
     {
       letter: "r",
-      state: "pending", // pending, passed, failed
+      state: LetterState.Pending,
     },
     {
       letter: "c",
-      state: "pending", // pending, passed, failed
+      state: LetterState.Pending,
     },
     {
       letter: "h",
-      state: "pending", // pending, passed, failed
+      state: LetterState.Pending,
     },
     {
       letter: "i",
-      state: "pending", // pending, passed, failed
+      state: LetterState.Pending,
     },
   ],
 };

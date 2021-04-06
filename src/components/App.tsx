@@ -27,6 +27,7 @@ export enum Action {
   CharPressed,
   InputChanged,
 }
+
 // Action  ActionInitiator
 export type ActionInitiator = {
   type: Action;
