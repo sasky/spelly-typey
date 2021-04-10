@@ -1,32 +1,28 @@
 import * as React from "react";
 import { Box, Flex, Input } from "@chakra-ui/react";
-import { layoutDebugStyles, Action } from "../../App";
-import { Challenge } from "./Challendge";
-import { GameState } from "../state/gameState";
+import { layoutDebugStyles } from "../App";
+import {AppState} from "../appSate";
+import {Action} from "../appActions";
+import {Current} from './current/Current';
 
-export const GameTemplate = ({
+export const Game = ({
   state,
   dispatch,
 }: {
-  state: GameState;
+  state: AppState;
   dispatch: Function;
 }) => {
+    const game = state.game;
   return (
     <Flex {...layoutDebugStyles} flexDirection="column" justifyContent="center">
       <Box as="section" flexGrow={2}></Box>
-      <Challenge currentSet={state.current} />
+      <Current state={state} />
       <Box flexGrow={3}>
-        <h3>{state.hint}</h3>
+        <h3>{game.hint}</h3>
       </Box>
       <Input
-        value={state.input}
-        onChange={(e) =>
-          dispatch({
-            type: Action.InputChanged,
-            payload: { key: "input", value: e.target.value },
-          })
-        }
-        onKeyDown={(e) => {
+        value={game.input}
+        onChange={(e) =>{
           // do the dispatches
           // start game if not already
           // start tmimer
@@ -34,9 +30,10 @@ export const GameTemplate = ({
           //
           // dispatch typed character
           dispatch({
-            type: Action.CharPressed,
-            payload: { key: "character", value: e.key },
+            type: Action.InputChanged,
+            payload: { key: "input", value: e.target.value },
           });
+        
         }}
         flexGrow={3}
       />
